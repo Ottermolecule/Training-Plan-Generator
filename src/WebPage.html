@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Training Plan Generator</title>
+    <style>
+html {
+ scroll-behavior: smooth;
+}
+
+body {
+  background-color: #343536;
+  color: #00c2cb;
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 5%;
+  margin: 50px 0 100px 0;
+}
+
+img.sticky {
+  position: fixed;
+  top: 0;
+  width: 100px;
+}
+
+.slidecontainer {
+  width: 100%;
+  text-align:center;
+  height: 600px;
+}
+.slidecontainer2 {
+  width: 100%;
+  text-align:center;
+  height: 600px;
+}
+.typeOfTraining {
+  width: 100%;
+  text-align:center;
+  height: 600px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 60%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #00c2cb;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+
+.next {
+
+  -webkit-appearance: none;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+.previous {
+
+  -webkit-appearance: none;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.trainingType{
+
+}
+
+.round {
+    border-radius: 50%;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+.round:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+<div>
+    <img class="sticky" src="ImogenCodes(1).png" alt="imogenCodes logo">
+</div>
+<!--Slider1 - ability climbing level-->
+
+<div class="slidecontainer" id="Level">
+    <p style="padding-top: 5%"> </p>
+    <h1>Current Climbing Level</h1>
+    <label for="abilityLevelSlider"></label><input type="range" min="1" max="5" value="3" class="slider" id="abilityLevelSlider">
+    <p>Ability: <span id="abilityLevel"></span></p>
+    <a href="#Availability" class="next round">&#8250;</a>
+</div>
+<!--Slider2 - availabily days of the week-->
+
+
+<div class="slidecontainer2" id="Availability">
+    <p style="padding-top: 5%"> </p>
+    <h1 style="padding-top: 5%">Availability</h1>
+    <label for="availabilityLevelSlider"></label><input type="range" min="1" max="7" value="4" class="slider" id="availabilityLevelSlider">
+    <p>Availability (Days A Week): <span id="availabilityLevel"></span></p>
+    <a href="#Level" class="previous round">&#8249;</a>
+    <a href="#Type" class="next round">&#8250;</a>
+</div>
+
+<div class="typeOfTraining" id="Type">
+    <p style="padding-top: 5%"> </p>
+    <h1 style="padding-top: 5%">Type Of Training</h1>
+    <form>
+        <input type="radio" value="Power Endurance" class="trainingType" id="powEnd" name="radio">
+        <label for="powEnd">Power Endurance</label>
+        <input type="radio" value="Power" class="trainingType" id="power" name="radio">
+        <label for="power">Power</label>
+        <input type="radio" value="Endurance" class="trainingType" id="endur" name="radio">
+        <label for="endur">Endurance</label>
+        <input type="radio" value="Strength" class="trainingType" id="strength" name="radio">
+        <label for="strength">Strength</label>
+        <input type="radio" value="General Fitness" class="trainingType" id="genFit" name="radio">
+        <label for="genFit">General Fitness</label>
+    </form>
+    <p>What do you want to focus on? </p>
+    <a href="#Availability" class="previous round">&#8249;</a>
+</div>
+<script>
+//Slider1 - ability climbing level
+
+
+const abilitySlider = document.getElementById("abilityLevelSlider");
+const abilityOutput = document.getElementById("abilityLevel");
+const abilityLevelArray = ["Beginner", "Casual", "Intermediate", "Advanced", "Expert"];
+abilityOutput.innerHTML = abilityLevelArray[abilitySlider.value - 1];
+
+abilitySlider.oninput = function() {
+  abilityOutput.innerHTML = abilityLevelArray[this.value - 1];
+}
+
+<!--Slider2 - availability days of the week-->
+
+const availabilitySlider = document.getElementById("availabilityLevelSlider");
+const availabilityOutput = document.getElementById("availabilityLevel");
+availabilityOutput.innerHTML = abilitySlider.value;
+availabilitySlider.oninput = function() {
+  availabilityOutput.innerHTML = this.value;
+}
+</script>
+
+</body>
+</html>
